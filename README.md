@@ -8,5 +8,5 @@ Made for my father =P.
 Multi-platform with Cmake.
 
 Source :
-http://www.myabandonware.com/game/maxit-10
-http://www.mobygames.com/game/maxit/screenshots
+- http://www.myabandonware.com/game/maxit-10
+- http://www.mobygames.com/game/maxit/screenshots
