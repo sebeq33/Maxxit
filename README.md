@@ -1,7 +1,8 @@
 Maxxit
 ======
 
-Old little strategic game, similar to old Maxit game (DOS), c++ and sdl (+sdl ttf)
+Old little strategic game, similar to old Maxit game (DOS), c++ and sdl (+sdl ttf).
+
 Made for my father =P.
 
 Multi-platform with Cmake.
