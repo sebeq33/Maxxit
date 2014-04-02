@@ -3,7 +3,7 @@
 #include <SDL2\SDL_ttf.h>
 #include "Label.hh"
 
-//http://fr.openclassrooms.com/informatique/cours/apprenez-a-programmer-en-c/les-differentes-methodes-d-ecriture
+//Ref : http://fr.openclassrooms.com/informatique/cours/apprenez-a-programmer-en-c/les-differentes-methodes-d-ecriture
 
 class Font
 {

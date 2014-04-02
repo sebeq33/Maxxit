@@ -2,8 +2,9 @@
 
 #include <SDL2\SDL.h>
 #include <string>
-#include "Font.h"
-#include "IDisplay.h"
+#include "IDisplay.hh"
+
+class Font;
 
 class Label : public IDisplay, public std::string
 {

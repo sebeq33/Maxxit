@@ -86,7 +86,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Sébastien\Documents\workspace\Maxxit\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Sébastien\Documents\workspace\Maxxit\lib\x64</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -119,24 +119,30 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Users\Sébastien\Documents\workspace\Maxxit\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Sébastien\Documents\workspace\Maxxit\lib\x64</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+      <NoEntryPoint>false</NoEntryPoint>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\SDLGame.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Font.cpp" />
     <ClCompile Include="src\Maxxit.cpp" />
+    <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\IDisplay.h" />
-    <ClInclude Include="src\Font.h" />
-    <ClInclude Include="src\IGui.h" />
-    <ClInclude Include="src\Image.h" />
-    <ClInclude Include="src\Label.h" />
-    <ClInclude Include="src\Maxxit.h" />
-    <ClInclude Include="src\SDLGame.h" />
-    <ClInclude Include="src\Window.h" />
+    <ClInclude Include="include\IDisplay.hh" />
+    <ClInclude Include="include\Font.hh" />
+    <ClInclude Include="include\IGui.hh" />
+    <ClInclude Include="include\Image.hh" />
+    <ClInclude Include="include\Label.hh" />
+    <ClInclude Include="include\Maxxit.hh" />
+    <ClInclude Include="include\SDLGame.hh" />
+    <ClInclude Include="include\Window.hh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

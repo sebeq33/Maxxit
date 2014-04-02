@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Window.h"
+class Window;
 
 class IGui
 {

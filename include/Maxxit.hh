@@ -1,8 +1,5 @@
 #pragma once
 
-#include <list>
-#include "SDLGame.hpp"
-
 class Maxxit
 {
 private:
@@ -11,4 +8,6 @@ private:
 
 public:
 	Maxxit();
+	~Maxxit();
+	void start();
 };
