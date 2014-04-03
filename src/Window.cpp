@@ -17,6 +17,8 @@ Window::~Window()
 		SDL_FreeSurface(this->icon);
 }
 
+#include <iostream>
+
 void Window::start()
 {
 	this->screen = SDL_CreateWindow(this->windowTitle.c_str(),
@@ -28,9 +30,11 @@ void Window::start()
 		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
 	if (this->iconPath != "")
 	{
-		this->icon = SDL_LoadBMP(this->iconPath.c_str());
+		this->icon = IMG_Load(this->iconPath.c_str());
 		if (this->icon != NULL)
 			SDL_SetWindowIcon(this->screen, this->icon);
+		else
+			std::cout << std::string("IMG_Init Error (.png): ") + IMG_GetError() << std::endl;
 	}
 }
 

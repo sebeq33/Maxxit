@@ -8,8 +8,15 @@
 
 int main(int argc, char *argv[])
 {
-	SDLGame game(new Window(800, 600, "FIRST"));
+	SDLGame game(new Window(800, 600, "FIRST", "ressources/maxit_icon.png"));
 	
-	game.start();
+	try
+	{
+		game.start();
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "ERROR : " << e.what() << std::endl;
+	}
 	return (EXIT_SUCCESS);
 }

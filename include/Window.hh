@@ -3,6 +3,7 @@
 #include <list>
 #include <string>
 #include <SDL2\SDL.h>
+#include <SDL2\SDL_image.h>
 #include "IDisplay.hh"
 
 class Window

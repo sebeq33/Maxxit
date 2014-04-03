@@ -17,7 +17,9 @@ void SDLGame::start()//IGame *game, Window *)
 		throw std::logic_error("Screen missing");
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
-	if (TTF_Init() == -1)
+	if (IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG != IMG_INIT_PNG)
+		throw std::runtime_error(std::string("IMG_Init Error (.png): ") + IMG_GetError());
+	if (TTF_Init() != 0)
 		throw std::runtime_error(std::string("TTF_Init Error: ") + TTF_GetError());
 			
 	this->screen->start();
@@ -25,6 +27,7 @@ void SDLGame::start()//IGame *game, Window *)
 	SDL_Delay(5000);
 
 	TTF_Quit();
+	IMG_Quit();
 	SDL_Quit();
 }
 
