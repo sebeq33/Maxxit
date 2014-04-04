@@ -5,6 +5,9 @@
 #include <SDL2\SDL.h>
 #include <SDL2\SDL_image.h>
 #include "IDisplay.hh"
+#include "IGui.hh"
+
+//Ref SDL 1.2 to 2.0 FR : http://jeux.developpez.com/tutoriels/sdl-2/guide-migration/
 
 class Window
 {
@@ -12,9 +15,12 @@ private:
 	Window(const Window &);
 	Window &operator=(const Window &);
 
-	SDL_Window *screen;
-	SDL_Surface *icon;
-	std::list<IDisplay *> elements;
+	SDL_Window *window;
+	SDL_Surface *screen;
+	SDL_Surface *icon; //replace by image
+	std::list<IGui *> guiList;
+	std::list<IDisplay *> displayList;
+
 	int sizeX, sizeY;
 	std::string windowTitle;
 	std::string iconPath;
@@ -23,10 +29,10 @@ public:
 	Window(int sizeX = 800, 
 		int sizeY = 640, 
 		const std::string &windowTitle = "no name",
-		const std::string &iconPath = ""); //open window, set window title / size / icon ...etc
+		const std::string &iconPath = "");
 	~Window();
 
-	void start();
+	void start(); //allocate and open window
 	void resize(int sizeX, int sizeY);
 	void setTitle(const std::string &title);
 	const std::string &getWindowTitle() const;
@@ -34,9 +40,20 @@ public:
 	bool isFullScreen();
 	void toggleFullScreen();
 
-	void updateDisplay(); //Flip Display
-	void addDisplay(const IDisplay *);
+	void updateDisplays();              //Flip all Display from scratch (temporary display will disappear)
+	void addDisplay(IDisplay *);
 	void removeDisplay(const IDisplay *);
+
+	void blitDisplay(IDisplay *display);       //temporaly blit a display on the current screen
+	void updateWindow();                //Flip the window with temporary blited display
+
+	void addGui(IGui *gui);
+	void removeGui(IGui *gui);
+	IGui *popGui();
+	std::list<IGui *> &getGuiList();
+
+	SDL_Window *getWindow();
+
 	int getSizeX() const;
 	int getSizeY() const;
 };

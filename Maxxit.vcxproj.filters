@@ -30,6 +30,9 @@
     <ClCompile Include="src\SDLGame.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="src\Rectangle.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Font.hh">
@@ -59,6 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="include\IGame.hh">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </None>
+    <None Include="include\Rectangle.hh">
       <Filter>Fichiers d%27en-tête</Filter>
     </None>
   </ItemGroup>

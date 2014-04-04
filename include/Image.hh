@@ -13,7 +13,7 @@ private:
 
 public:
 	Image(){}
-	~Image(){} //don't unload auto, force unload()
+	~Image(){}
 	bool load(const std::string &path);
 	void unload();
 	bool loaded() const;

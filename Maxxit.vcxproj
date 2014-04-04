@@ -89,6 +89,9 @@
       <AdditionalLibraryDirectories>C:\Users\Sébastien\Documents\workspace\Maxxit\lib\x64</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -128,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Rectangle.cpp" />
     <ClCompile Include="src\SDLGame.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Font.cpp" />
@@ -146,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="include\IGame.hh" />
+    <None Include="include\Rectangle.hh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

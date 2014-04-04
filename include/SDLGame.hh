@@ -18,22 +18,18 @@ private:
 	SDLGame(const SDLGame &);
 	SDLGame& operator=(const SDLGame &);
 
+protected:
 	std::list<Font *> fontList;
 	std::list<Image *> imageList; //stacks ? w FontID ImageID ?
-	std::list<IGui *> guiList;
 	Window screen;
 
-	virtual void startGame() = 0;
+	virtual void startGame() = 0; //done by the game implementing this class
 
 public:
 	SDLGame(int sizeX, int sizeY, const std::string &title, const std::string &iconPath);
 	~SDLGame();
 	
 	void start();
-
-	void addGui(IGui *gui);
-	IGui *popGui();
-	std::list<IGui *> &getGuiList();
 
 	void addImage(Image *img);
 	Image *popImage();
@@ -42,7 +38,4 @@ public:
 	void addFont(Font *font);
 	Font *popFont();
 	std::list<Font *> &getFontList();
-
-	void setWindow(Window *screen);
-	Window &getWindow();
 };

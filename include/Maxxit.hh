@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SDLGame.hh"
+#include "Rectangle.hh"
 
 class Maxxit : public SDLGame
 {
