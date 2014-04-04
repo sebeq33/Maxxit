@@ -144,6 +144,9 @@
     <ClInclude Include="include\SDLGame.hh" />
     <ClInclude Include="include\Window.hh" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="include\IGame.hh" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

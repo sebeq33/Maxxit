@@ -27,6 +27,12 @@ public:
 	~Window();
 
 	void start();
+	void resize(int sizeX, int sizeY);
+	void setTitle(const std::string &title);
+	const std::string &getWindowTitle() const;
+
+	bool isFullScreen();
+	void toggleFullScreen();
 
 	void updateDisplay(); //Flip Display
 	void addDisplay(const IDisplay *);

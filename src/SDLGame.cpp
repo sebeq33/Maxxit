@@ -1,34 +1,27 @@
 #include "SDLGame.hh"
 
-SDLGame::SDLGame(Window *window)
+SDLGame::SDLGame(int sizeX, int sizeY, const std::string &title, const std::string &iconPath)
+	: screen(sizeX, sizeY, title, iconPath)
 {
-	this->screen = window;
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
+	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG)
+		throw std::runtime_error(std::string("IMG_Init Error (.png): ") + IMG_GetError());
+	if (TTF_Init() != 0)
+		throw std::runtime_error(std::string("TTF_Init Error: ") + TTF_GetError());
 }
 
 SDLGame::~SDLGame()
 {
-	if (this->screen != NULL)
-		delete (screen);
-}
-
-void SDLGame::start()//IGame *game, Window *)
-{
-	if (screen == NULL)
-		throw std::logic_error("Screen missing");
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
-	if (IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG != IMG_INIT_PNG)
-		throw std::runtime_error(std::string("IMG_Init Error (.png): ") + IMG_GetError());
-	if (TTF_Init() != 0)
-		throw std::runtime_error(std::string("TTF_Init Error: ") + TTF_GetError());
-			
-	this->screen->start();
-	//game->start(this);
-	SDL_Delay(5000);
-
 	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();
+}
+
+void SDLGame::start()
+{
+	this->screen.start();
+	this->startGame();
 }
 
 void SDLGame::addGui(IGui *gui)
@@ -82,14 +75,7 @@ std::list<Font *> &SDLGame::getFontList()
 	return (this->fontList);
 }
 
-void SDLGame::setWindow(Window *screen)
-{
-	if (this->screen != NULL)
-		delete (screen);
-	this->screen = screen;
-}
-
-Window *SDLGame::getWindow()
+Window &SDLGame::getWindow()
 {
 	return (this->screen);
 }

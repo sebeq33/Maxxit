@@ -1,6 +1,8 @@
 #pragma once
 
-class Maxxit
+#include "SDLGame.hh"
+
+class Maxxit : public SDLGame
 {
 private:
 	Maxxit(const Maxxit &);
@@ -9,5 +11,5 @@ private:
 public:
 	Maxxit();
 	~Maxxit();
-	void start();
+	void startGame();
 };

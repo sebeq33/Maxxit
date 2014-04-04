@@ -1,6 +1,7 @@
 #pragma once
 
 #include <list>
+#include <string>
 #include <iostream>
 #include <exception>
 #include <SDL2\SDL.h>
@@ -9,7 +10,7 @@
 #include "Font.hh"
 #include "Image.hh"
 #include "IGui.hh"
-
+#include "IGame.hh"
 
 class SDLGame
 {
@@ -20,11 +21,14 @@ private:
 	std::list<Font *> fontList;
 	std::list<Image *> imageList; //stacks ? w FontID ImageID ?
 	std::list<IGui *> guiList;
-	Window *screen;
+	Window screen;
+
+	virtual void startGame() = 0;
 
 public:
-	SDLGame(Window *screen = NULL);
+	SDLGame(int sizeX, int sizeY, const std::string &title, const std::string &iconPath);
 	~SDLGame();
+	
 	void start();
 
 	void addGui(IGui *gui);
@@ -40,5 +44,5 @@ public:
 	std::list<Font *> &getFontList();
 
 	void setWindow(Window *screen);
-	Window *getWindow();
+	Window &getWindow();
 };
