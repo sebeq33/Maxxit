@@ -24,36 +24,36 @@ void SDLGame::start()
 	this->startGame();
 }
 
-void SDLGame::addImage(Image *img)
+void SDLGame::addSurface(ISurface *img)
 {
-	this->imageList.push_back(img);
+	this->loadedSurfaceList.push_back(img);
 }
 
-Image *SDLGame::popImage()
+ISurface *SDLGame::popSurface()
 {
-	Image *last = this->imageList.back();
-	this->imageList.pop_back();
+	ISurface *last = this->loadedSurfaceList.back();
+	this->loadedSurfaceList.pop_back();
 	return (last);
 }
 
-std::list<Image *> &SDLGame::getImageList()
+std::list<ISurface *> &SDLGame::getSurfaceList()
 {
-	return (this->imageList);
+	return (this->loadedSurfaceList);
 }
 
 void SDLGame::addFont(Font *font)
 {
-	this->fontList.push_back(font);
+	this->loadedFontList.push_back(font);
 }
 
 Font *SDLGame::popFont()
 {
-	Font *last = this->fontList.back();
-	this->fontList.pop_back();
+	Font *last = this->loadedFontList.back();
+	this->loadedFontList.pop_back();
 	return (last);
 }
 
 std::list<Font *> &SDLGame::getFontList()
 {
-	return (this->fontList);
+	return (this->loadedFontList);
 }

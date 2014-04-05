@@ -10,17 +10,17 @@
 #include "Font.hh"
 #include "Image.hh"
 #include "IGui.hh"
-#include "IGame.hh"
 
 class SDLGame
 {
 private:
+	// no copy
 	SDLGame(const SDLGame &);
 	SDLGame& operator=(const SDLGame &);
 
 protected:
-	std::list<Font *> fontList;
-	std::list<Image *> imageList; //stacks ? w FontID ImageID ?
+	std::list<Font *> loadedFontList;
+	std::list<ISurface *> loadedSurfaceList;
 	Window screen;
 
 	virtual void startGame() = 0; //done by the game implementing this class
@@ -31,9 +31,9 @@ public:
 	
 	void start();
 
-	void addImage(Image *img);
-	Image *popImage();
-	std::list<Image *> &getImageList();
+	void addSurface(ISurface *img);
+	ISurface *popSurface();
+	std::list<ISurface *> &getSurfaceList();
 
 	void addFont(Font *font);
 	Font *popFont();

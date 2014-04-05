@@ -13,10 +13,10 @@ Maxxit::~Maxxit()
 
 void Maxxit::startGame()
 {
-	Rectangle rect(50, 50, 100, 100);
+	Rectangle rect(100, 100);
 	rect.setColor(255, 0, 0);
-
-	this->screen.blitDisplay(static_cast<IDisplay *>(&rect));
-	this->screen.updateWindow();  
-	SDL_Delay(5000);
+	Display displayRect(static_cast<ISurface *>(&rect), 100, 100);
+	this->screen.blitDisplay(&displayRect);
+	this->screen.updateWindow();
+	SDL_Delay(10000);
 }

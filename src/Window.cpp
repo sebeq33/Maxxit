@@ -60,38 +60,44 @@ void toggleFullScreen()
 void Window::updateDisplays()
 {
 	this->guiList.back()->display(*this);
-	for(std::list<IDisplay *>::iterator it = displayList.begin(); it != displayList.end(); ++it)
+	for(std::list<Display *>::iterator it = displayList.begin(); it != displayList.end(); ++it)
 	{
 		this->blitDisplay((*it));
 	}
 	this->updateWindow();
 }
 
-void Window::addDisplay(IDisplay *display)
+void Window::addDisplay(Display *display)
 {
 	this->displayList.push_back(display);
 }
 
-void Window::removeDisplay(const IDisplay *)
+void Window::removeDisplay(const Display *)
 {
 	//TODO
 }
 
-void Window::blitDisplay(IDisplay *display)
+#include <iostream>
+
+void Window::blitDisplay(Display *display)
 {
-	SDL_Surface *src = display->getSurface();
+	ISurface *surface = display->getSurface();
+	if (surface == NULL)
+		return ;
+	SDL_Surface *src = surface->getSurface();
+	if (src == NULL)
+		return ;
 	SDL_Rect rect;
 	rect.x = display->getPosX();
 	rect.y = display->getPosY();
 	rect.w = src->w;
 	rect.h = src->h;
-	
-	if (src != NULL)
-		SDL_BlitSurface(src, NULL, screen, &rect);
+ 	SDL_BlitSurface(src, NULL, screen, &rect);
 }
 
 void Window::updateWindow()
 {
+	std::cout << "UPDATE" << std::endl;
 	SDL_UpdateWindowSurface(window);
 }
 

@@ -4,7 +4,7 @@
 #include <string>
 #include <SDL2\SDL.h>
 #include <SDL2\SDL_image.h>
-#include "IDisplay.hh"
+#include "Display.hh"
 #include "IGui.hh"
 
 //Ref SDL 1.2 to 2.0 FR : http://jeux.developpez.com/tutoriels/sdl-2/guide-migration/
@@ -19,7 +19,7 @@ private:
 	SDL_Surface *screen;
 	SDL_Surface *icon; //replace by image
 	std::list<IGui *> guiList;
-	std::list<IDisplay *> displayList;
+	std::list<Display *> displayList;
 
 	int sizeX, sizeY;
 	std::string windowTitle;
@@ -41,10 +41,10 @@ public:
 	void toggleFullScreen();
 
 	void updateDisplays();              //Flip all Display from scratch (temporary display will disappear)
-	void addDisplay(IDisplay *);
-	void removeDisplay(const IDisplay *);
+	void addDisplay(Display *);
+	void removeDisplay(const Display *);
 
-	void blitDisplay(IDisplay *display);       //temporaly blit a display on the current screen
+	void blitDisplay(Display *display);       //temporaly blit a display on the current screen
 	void updateWindow();                //Flip the window with temporary blited display
 
 	void addGui(IGui *gui);

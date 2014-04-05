@@ -2,11 +2,11 @@
 
 #include <SDL2\SDL.h>
 #include <string>
-#include "IDisplay.hh"
+#include "Display.hh"
 
 class Font;
 
-class Label : public IDisplay, public std::string
+class Label : public ISurface, public std::string
 {
 private:
 	Font &font;
@@ -23,7 +23,5 @@ public:
 	Font &getFont();
 	void setFont(Font &);
 
-	int getPosX() const;
-	int getPosY() const;
 	const SDL_Surface *getSurface() const; //if str != lastStr recreate lastText
 };

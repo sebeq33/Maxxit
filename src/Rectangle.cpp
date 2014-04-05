@@ -1,9 +1,7 @@
 #include "Rectangle.hh"
 
-Rectangle::Rectangle(int posX, int posY, int sizeX , int sizeY)
+Rectangle::Rectangle(int sizeX , int sizeY)
 	: rect(NULL), 
-	posX(posX), 
-	posY(posY), 
 	sizeX(sizeX), 
 	sizeY(sizeY),
 	red(255),
@@ -20,14 +18,16 @@ Rectangle::~Rectangle()
 
 }
 
+#include <iostream>
 
 void Rectangle::createSurface()
 {
 	if (this->rect != NULL)
 		SDL_FreeSurface(this->rect);
-	this->rect = SDL_CreateRGBSurface(0, sizeX, sizeY, 32, 0, 0, 0, 0); //Creating the surface.
-	SDL_FillRect(this->rect, NULL, SDL_MapRGBA(rect->format, red, green, blue, alpha)); //Filling the surface with red colour.
+	this->rect = SDL_CreateRGBSurface(0, sizeX, sizeY, 32, 0, 0, 0, 0);
+	SDL_FillRect(this->rect, NULL, SDL_MapRGBA(rect->format, red, green, blue, alpha));
 	modified = false;
+	
 }
 
 void Rectangle::setColorRed(Uint8 red)
@@ -63,19 +63,16 @@ void Rectangle::setColor(Uint8 red, Uint8 green, Uint8 blue, Uint8 alpha)
 	modified = true;
 }
 
-int Rectangle::getPosX() const
-{
-	return (this->posX);
-}
-
-int Rectangle::getPosY() const
-{
-	return (this->posY);
-}
-
 SDL_Surface *Rectangle::getSurface()
 {
 	if (this->modified)
 		this->createSurface();
 	return (this->rect);
+}
+
+void Rectangle::unload()
+{
+	SDL_FreeSurface(this->rect);
+	this->rect = NULL;
+	modified = true;
 }

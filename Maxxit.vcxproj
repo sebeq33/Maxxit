@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Display.cpp" />
     <ClCompile Include="src\Rectangle.cpp" />
     <ClCompile Include="src\SDLGame.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -139,18 +140,36 @@
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\IDisplay.hh" />
-    <ClInclude Include="include\Font.hh" />
-    <ClInclude Include="include\IGui.hh" />
-    <ClInclude Include="include\Image.hh" />
-    <ClInclude Include="include\Label.hh" />
-    <ClInclude Include="include\Maxxit.hh" />
-    <ClInclude Include="include\SDLGame.hh" />
-    <ClInclude Include="include\Window.hh" />
+    <ClInclude Include="include\Display.hh">
+      <FileType>CppHeader</FileType>
+    </ClInclude>
+    <ClInclude Include="include\Font.hh">
+      <FileType>CppHeader</FileType>
+    </ClInclude>
+    <ClInclude Include="include\IGui.hh">
+      <FileType>CppHeader</FileType>
+    </ClInclude>
+    <ClInclude Include="include\Image.hh">
+      <FileType>CppHeader</FileType>
+    </ClInclude>
+    <ClInclude Include="include\ISurface.hh" />
+    <ClInclude Include="include\Label.hh">
+      <FileType>CppHeader</FileType>
+    </ClInclude>
+    <ClInclude Include="include\Maxxit.hh">
+      <FileType>CppHeader</FileType>
+    </ClInclude>
+    <ClInclude Include="include\SDLGame.hh">
+      <FileType>CppHeader</FileType>
+    </ClInclude>
+    <ClInclude Include="include\Window.hh">
+      <FileType>CppHeader</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="include\IGame.hh" />
-    <None Include="include\Rectangle.hh" />
+    <None Include="include\Rectangle.hh">
+      <FileType>CppHeader</FileType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
