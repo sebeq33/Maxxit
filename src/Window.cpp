@@ -77,8 +77,6 @@ void Window::removeDisplay(const Display *)
 	//TODO
 }
 
-#include <iostream>
-
 void Window::blitDisplay(Display *display)
 {
 	ISurface *surface = display->getSurface();
@@ -97,7 +95,6 @@ void Window::blitDisplay(Display *display)
 
 void Window::updateWindow()
 {
-	std::cout << "UPDATE" << std::endl;
 	SDL_UpdateWindowSurface(window);
 }
 

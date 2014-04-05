@@ -18,8 +18,6 @@ Rectangle::~Rectangle()
 
 }
 
-#include <iostream>
-
 void Rectangle::createSurface()
 {
 	if (this->rect != NULL)

@@ -2,8 +2,9 @@
 
 #include <string>
 #include <SDL2\SDL.h>
+#include "ISurface.hh"
 
-class Image
+class Image : ISurface
 {
 private:
 	Image(const Image &);
