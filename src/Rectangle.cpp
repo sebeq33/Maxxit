@@ -25,7 +25,6 @@ void Rectangle::createSurface()
 	this->rect = SDL_CreateRGBSurface(0, sizeX, sizeY, 32, 0, 0, 0, 0);
 	SDL_FillRect(this->rect, NULL, SDL_MapRGBA(rect->format, red, green, blue, alpha));
 	modified = false;
-	
 }
 
 void Rectangle::setColorRed(Uint8 red)
@@ -66,6 +65,11 @@ SDL_Surface *Rectangle::getSurface()
 	if (this->modified)
 		this->createSurface();
 	return (this->rect);
+}
+
+bool Rectangle::loaded() const
+{
+	return (this->rect != NULL);
 }
 
 void Rectangle::unload()

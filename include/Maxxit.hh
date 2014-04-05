@@ -2,6 +2,7 @@
 
 #include "SDLGame.hh"
 #include "Rectangle.hh"
+#include "Image.hh"
 
 class Maxxit : public SDLGame
 {

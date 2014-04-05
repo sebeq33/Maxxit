@@ -59,8 +59,9 @@ void toggleFullScreen()
 
 void Window::updateDisplays()
 {
-	this->guiList.back()->display(*this);
-	for(std::list<Display *>::iterator it = displayList.begin(); it != displayList.end(); ++it)
+	if (!this->guiList.empty())
+		this->guiList.back()->display(*this);
+	for(std::list<Display *>::iterator it = displayList.begin(); it != displayList.end(); it++)
 	{
 		this->blitDisplay((*it));
 	}
@@ -79,6 +80,8 @@ void Window::removeDisplay(const Display *)
 
 void Window::blitDisplay(Display *display)
 {
+	if (display == NULL)
+		return ;
 	ISurface *surface = display->getSurface();
 	if (surface == NULL)
 		return ;

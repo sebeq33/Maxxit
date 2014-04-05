@@ -36,6 +36,9 @@
     <ClCompile Include="src\Display.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="src\Image.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Font.hh">
@@ -70,5 +73,10 @@
     <None Include="include\Rectangle.hh">
       <Filter>Fichiers d%27en-tête</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ressources\ressources.rc">
+      <Filter>Fichiers de ressources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

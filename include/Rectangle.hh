@@ -27,5 +27,6 @@ public:
 	void setColor(Uint8 red, Uint8 green, Uint8 blue, Uint8 alpha = 255);
 
 	SDL_Surface *getSurface();
+	bool loaded() const;
 	void unload();
 };

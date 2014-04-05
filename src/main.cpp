@@ -12,6 +12,7 @@
 
 //SDL2 API : http://wiki.libsdl.org/APIByCategory
 
+
 int main(int argc, char *argv[])
 {
 #ifdef _DEBUG

@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Display.cpp" />
+    <ClCompile Include="src\Image.cpp" />
     <ClCompile Include="src\Rectangle.cpp" />
     <ClCompile Include="src\SDLGame.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -152,7 +153,9 @@
     <ClInclude Include="include\Image.hh">
       <FileType>CppHeader</FileType>
     </ClInclude>
-    <ClInclude Include="include\ISurface.hh" />
+    <ClInclude Include="include\ISurface.hh">
+      <FileType>CppHeader</FileType>
+    </ClInclude>
     <ClInclude Include="include\Label.hh">
       <FileType>CppHeader</FileType>
     </ClInclude>
@@ -170,6 +173,9 @@
     <None Include="include\Rectangle.hh">
       <FileType>CppHeader</FileType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ressources\ressources.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

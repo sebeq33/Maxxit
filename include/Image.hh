@@ -2,9 +2,10 @@
 
 #include <string>
 #include <SDL2\SDL.h>
+#include <SDL2\SDL_image.h>
 #include "ISurface.hh"
 
-class Image : ISurface
+class Image : public ISurface
 {
 private:
 	Image(const Image &);
@@ -13,10 +14,15 @@ private:
 	SDL_Surface *src;
 
 public:
-	Image(){}
-	~Image(){}
+	Image(const std::string &path = "");
+	~Image();
+
 	bool load(const std::string &path);
 	void unload();
 	bool loaded() const;
-	const SDL_Surface *getImage();
+
+	int getSizeX() const;
+	int getSizeY() const;
+
+	SDL_Surface *getSurface();
 };
