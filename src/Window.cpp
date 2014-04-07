@@ -7,7 +7,7 @@ Window::Window(int sizeX, int sizeY, const std::string &windowTitle, const std::
 
 Window::~Window()
 {
-	//screen free by destroy window
+	//screen is free by destroy window
 	if (this->window != NULL)
 		SDL_DestroyWindow(this->window);
 	if (this->icon != NULL)
@@ -18,16 +18,21 @@ void Window::start()
 {
 	this->window = SDL_CreateWindow(this->windowTitle.c_str(),
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
-		this->sizeX, this->sizeY, 
-		SDL_WINDOW_SHOWN);
+		this->sizeX, this->sizeY, SDL_WINDOW_RESIZABLE);
 	if (this->window == NULL)
 		throw std::runtime_error(std::string("SDL_CreateWindow Error: ") + SDL_GetError());
+	
+	//TODO ==================
+	//SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");  // make the scaled rendering look smoother.
+	//SDL_RenderSetLogicalSize(sdlRenderer, 640, 480);
+	SDL_SetWindowMaximumSize(this->window, this->sizeX + 100, this->sizeY + 100);
+	SDL_SetWindowMinimumSize(this->window, this->sizeX - 100, this->sizeY - 100);
+
 	if ((this->screen = SDL_GetWindowSurface(window)) == NULL)
 		throw std::runtime_error(std::string("SDL_GetWindowSurface Error: ") + SDL_GetError());
 	if (this->iconPath != "")
 	{
-		this->icon = IMG_Load(this->iconPath.c_str());
-		if (this->icon != NULL)
+		if ((this->icon = IMG_Load(this->iconPath.c_str())) != NULL)
 			SDL_SetWindowIcon(this->window, this->icon);
 	}
 }

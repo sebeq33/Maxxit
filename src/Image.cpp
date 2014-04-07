@@ -1,31 +1,43 @@
+
 #include "Image.hh"
 
 Image::Image(const std::string &path)
-	: src(NULL)
+	: src(NULL), path(path)
 {
-	this->load(path);
 }
 
 Image::~Image()
 {
+	this->unload();
 }
 
 bool Image::load(const std::string &path)
 {
 	if (path != "")
 	{
-		if (this->src != NULL)
-			this->unload();
+		if (path == this->path && this->src != NULL)
+			return (true);
+		this->unload();
 		this->src = IMG_Load(path.c_str());
 		return (this->src != NULL);
 	}
 	return (false);
 }
 
+bool Image::preload()
+{
+	if (this->src == NULL)
+		this->load(this->path);
+	return (this->src != NULL);
+}
+
 void Image::unload()
 {
-	SDL_FreeSurface(this->src);
-	this->src = NULL;
+	if (this->src != NULL)
+	{
+		SDL_FreeSurface(this->src);
+		this->src = NULL;
+	}
 }
 
 bool Image::loaded() const
@@ -33,18 +45,22 @@ bool Image::loaded() const
 	return (this->src != NULL);
 }
 
-
 int Image::getSizeX() const
 {
-	return (src ? src->w : 0);
+	if (!this->src)
+		throw std::logic_error("Image::getSize : Need to load image");
+	return (src->w);
 }
 
 int Image::getSizeY() const
 {
-	return (src ? src->h : 0);
+	if (!this->src)
+		throw std::logic_error("Image::getSize : Need to load image");
+	return (src->h);
 }
 
 SDL_Surface *Image::getSurface()
 {
+	this->preload();
 	return (this->src);
 }

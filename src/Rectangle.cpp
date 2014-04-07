@@ -15,14 +15,19 @@ Rectangle::Rectangle(int sizeX , int sizeY)
 
 Rectangle::~Rectangle()
 {
-
+	this->unload();
 }
 
 void Rectangle::createSurface()
 {
+	if (!this->modified)
+		return ;
+	SDL_Surface *src = SDL_CreateRGBSurface(0, sizeX, sizeY, 32, 0, 0, 0, 0); 
+	if (src == NULL)
+		return ;
 	if (this->rect != NULL)
 		SDL_FreeSurface(this->rect);
-	this->rect = SDL_CreateRGBSurface(0, sizeX, sizeY, 32, 0, 0, 0, 0);
+	this->rect = src;
 	SDL_FillRect(this->rect, NULL, SDL_MapRGBA(rect->format, red, green, blue, alpha));
 	modified = false;
 }
@@ -62,9 +67,14 @@ void Rectangle::setColor(Uint8 red, Uint8 green, Uint8 blue, Uint8 alpha)
 
 SDL_Surface *Rectangle::getSurface()
 {
-	if (this->modified)
-		this->createSurface();
+	this->createSurface();
 	return (this->rect);
+}
+
+bool Rectangle::preload()
+{
+	this->createSurface();
+	return (this->rect != NULL);
 }
 
 bool Rectangle::loaded() const
@@ -74,7 +84,10 @@ bool Rectangle::loaded() const
 
 void Rectangle::unload()
 {
-	SDL_FreeSurface(this->rect);
-	this->rect = NULL;
-	modified = true;
+	if (this->rect != NULL)
+	{
+		SDL_FreeSurface(this->rect);
+		this->rect = NULL;
+		modified = true;
+	}
 }

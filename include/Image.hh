@@ -12,15 +12,17 @@ private:
 	Image& operator=(const Image &);
 
 	SDL_Surface *src;
+	std::string path;
 
 public:
 	Image(const std::string &path = "");
 	~Image();
 
 	bool load(const std::string &path);
+	bool preload();
 	void unload();
 	bool loaded() const;
-
+	
 	int getSizeX() const;
 	int getSizeY() const;
 

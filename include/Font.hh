@@ -21,8 +21,13 @@ private:
 
 	TTF_Font *font;
 	Quality currentQuality;
+	std::string path;
+	int size;
+	bool modified;
 	SDL_Color bg; //only for Shaded quality
 	SDL_Color fg;
+
+	void initDefaultColor();
 
 public:
 	Font();
@@ -30,6 +35,7 @@ public:
 	~Font();
 	
 	bool load(const std::string &path, int size, Quality q = Solid);
+	bool preload();
 	bool isLoaded() const;
 	void unload();
 
@@ -40,5 +46,5 @@ public:
 	void setForegroungColor(const SDL_Color &color);
 	
 	const TTF_Font *getFont() const;
-	Label &createLabel(const std::string &str) const;
+	Label *createLabel(const std::string &str) const;
 };

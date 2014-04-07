@@ -6,16 +6,16 @@
 
 class Font;
 
-class Label : public ISurface, public std::string
+class Label : public ISurface
 {
 private:
 	Font &font;
-	std::string lastStr;
+	bool modified;
+	std::string str;
 	SDL_Surface *lastText;
-	int posX, posY;
 
 public:
-	Label(Font &font, int posX = 0, int posY = 0);
+	Label(Font &font, const std::string &str = "");
 	Label(const Label &);
 	Label &operator=(const Label &);
 	~Label();
@@ -23,5 +23,10 @@ public:
 	Font &getFont();
 	void setFont(Font &);
 
-	const SDL_Surface *getSurface() const; //if str != lastStr recreate lastText
+	const std::string &getStr() const;
+	void setStr(const std::string &str);
+
+	bool loaded() const;
+	void unload();
+	SDL_Surface *getSurface(); //if str != lastStr recreate lastText
 };
